@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/maven-v4_0_0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>au.com.anushka</groupId>
+<artifactId>MyWaveAssignment</artifactId>
+<packaging>jar</packaging>
+<version>1.0</version>
+<name>MyWave Assignment</name>
+
+<dependencies>
+    <!-- Spring framework -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>4.2.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>4.2.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>4.2.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.9</version>
+    </dependency>
+
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.16</version>
+        <exclusions>
+            <exclusion>
+                <groupId>javax.jms</groupId>
+                <artifactId>jms</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>com.sun.jdmk</groupId>
+                <artifactId>jmxtools</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>com.sun.jmx</groupId>
+                <artifactId>jmxri</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+</dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.4.0</version>
+            <executions>
+                <execution>
+                   <goals>
+                        <goal>java</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <mainClass>au.com.anushka.mywave.assign.Main</mainClass>
+                <arguments>
+                    <argument>argument1</argument>
+                </arguments>
+                <systemProperties>
+                    <systemProperty>
+                        <key>myproperty</key>
+                        <value>myvalue</value>
+                    </systemProperty>
+
+                </systemProperties>
+            </configuration>
+        </plugin>
+    </plugins>
+    <resources>
+        <resource>
+            <filtering>true</filtering>
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+                <include>**/*.txt</include>
+            </includes>
+            <excludes>
+                <exclude>**/*local.properties</exclude>
+            </excludes>
+        </resource>
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+                <include>**/*.txt</include>
+            </includes>
+        </resource>
+    </resources>
+</build>
+
+
+
+</project>

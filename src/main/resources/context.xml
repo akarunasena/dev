@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="game" class="au.com.anushka.mywave.assign.model.Game">
+        <property name="robot">
+            <bean class="au.com.anushka.mywave.assign.model.Robot">
+                <property name="locationX" value="0"/>
+                <property name="locationY" value="0"/>
+                <property name="direction" value="NORTH"/>
+            </bean>
+        </property>
+        <property name="tableTop">
+            <bean class="au.com.anushka.mywave.assign.model.TableTop">
+                <property name="height" value="5"/>
+                <property name="width" value="5"/>
+            </bean>
+        </property>
+        <property name="commandMap">
+            <util:map>
+                <entry key="MOVE">
+                    <bean class="au.com.anushka.mywave.assign.command.impl.Move">
+                        <property name="commandType" value="MOVE"/>
+                    </bean>
+                </entry>
+                <entry key="PLACE">
+                    <bean class="au.com.anushka.mywave.assign.command.impl.Place">
+                        <property name="commandType" value="PLACE"/>
+                    </bean>
+                </entry>
+                <entry key="REPORT">
+                    <bean class="au.com.anushka.mywave.assign.command.impl.Report">
+                        <property name="commandType" value="REPORT"/>
+                    </bean>
+                </entry>
+                <entry key="LEFT">
+                    <bean class="au.com.anushka.mywave.assign.command.impl.Left">
+                        <property name="commandType" value="LEFT"/>
+                    </bean>
+                </entry>
+                <entry key="RIGHT">
+                    <bean class="au.com.anushka.mywave.assign.command.impl.Right">
+                        <property name="commandType" value="RIGHT"/>
+                    </bean>
+                </entry>
+            </util:map>
+        </property>
+    </bean>
+
+
+
+</beans>
