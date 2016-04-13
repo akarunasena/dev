@@ -40,14 +40,4 @@ public class Right extends AbstractCommand {
 
         return false;
     }
-
-    public Boolean valid(Robot robot, TableTop tableTop) {
-
-        //First Command Can only be a PLACE
-        if (robot.getPreviousCommand() == null) {
-            return false;
-        }
-
-        return true;
-    }
 }

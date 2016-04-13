@@ -4,6 +4,9 @@ package au.com.anushka.mywave.assign.command;
  * Created by akarunasena on 8/09/2015.
  */
 
+import au.com.anushka.mywave.assign.model.Robot;
+import au.com.anushka.mywave.assign.model.TableTop;
+
 /**
  * Abstract Command that needs to be implemented to have a Concrete Command
  *
@@ -33,5 +36,13 @@ public abstract class AbstractCommand implements Command{
      */
     public void setCommandType(CommandType commandType) {
         this.commandType = commandType;
+    }
+
+
+    public Boolean valid(Robot robot, TableTop tableTop) {
+
+        //First Command Can only be a PLACE
+        return robot.getPreviousCommand() != null;
+
     }
 }

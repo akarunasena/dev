@@ -49,13 +49,4 @@ public class Report extends AbstractCommand {
         return false;
     }
 
-    public Boolean valid(final Robot robot, final TableTop tableTop) {
-
-        //First Command Can only be a PLACE
-        if (robot.getPreviousCommand() == null) {
-            return false;
-        }
-
-        return true;
-    }
 }

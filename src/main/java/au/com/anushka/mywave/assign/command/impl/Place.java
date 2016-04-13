@@ -52,16 +52,11 @@ public class Place extends AbstractCommand {
     public Boolean valid(final Robot robot, final TableTop tableTop) {
 
         //If Set X location is Greater than table width invalid
-        if (this.locationX > tableTop.getWidth()) {
-            return false;
-        }
+        if (this.locationX > tableTop.getWidth()) return false;
 
         //If Set Y location is Greater than table height invalid
-        if (this.locationY > tableTop.getHeight()) {
-            return false;
-        }
+        return this.locationY <= tableTop.getHeight();
 
-        return true;
     }
 
     public Integer getLocationX() {

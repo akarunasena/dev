@@ -39,10 +39,9 @@ public class Move extends AbstractCommand {
 
     public Boolean valid(final Robot robot,final TableTop tableTop) {
 
-        //First Command Can only be a PLACE
-        if(robot.getPreviousCommand() == null){
-            return false;
-        }
+        //Evaluate Super Command Return if False Else Continue
+        final Boolean valid = super.valid(robot, tableTop);
+        if(!valid) return false;
 
         //Calculate X or Y According to the Direction
         final Integer moveX = moveHorizontal(robot);
@@ -50,24 +49,19 @@ public class Move extends AbstractCommand {
 
         //If Set X location is Greater than table width invalid
         //Or Negative is Invalid
-        if (moveX > tableTop.getWidth() || moveX < 0){
-            return false;
-        }
+        if (moveX > tableTop.getWidth() || moveX < 0) return false;
 
         //If Set Y location is Greater than table height invalid
         //Or Negative is Invalid
-        if (moveY > tableTop.getHeight() || moveY < 0) {
-            return false;
-        }
+        return !(moveY > tableTop.getHeight() || moveY < 0);
 
-        return true;
     }
 
    private Integer moveVertical(final Robot robot){
         //Direction North Will Add 1 Step
         if (Robot.Direction.NORTH.equals(robot.getDirection())){
             return  robot.getLocationY() + 1;
-        //Direction South Will Substract 1 Step
+        //Direction South Will Subtract 1 Step
         }else if (Robot.Direction.SOUTH.equals(robot.getDirection())){
             return  robot.getLocationY() - 1;
 
@@ -78,7 +72,7 @@ public class Move extends AbstractCommand {
 
     private Integer moveHorizontal(final Robot robot){
 
-        //Direction West Will Substract 1 Step
+        //Direction West Will Subtract 1 Step
         if (Robot.Direction.WEST.equals(robot.getDirection())) {
             return robot.getLocationX() - 1;
         //Direction East Will Add 1 Step
